@@ -4,6 +4,7 @@ import {
     StyleSheet,
     ScrollView,
     Dimensions,
+    WebView
 } from "react-native";
 import { Header, SearchBar } from 'react-native-elements';
 import HTML from 'react-native-render-html';
@@ -24,7 +25,8 @@ class Gallery extends Component {
   }
 
   onSubmit() {
-    const queryLink = 'https://duckduckgo.com/?t=h_&iar=images&iax=images&ia=images&q=' + this.state.textValue;
+    const SEARCHLINK = 'https://duckduckgo.com/?t=h_&iar=images&iax=images&ia=images&q='
+    const queryLink = SEARCHLINK + this.state.textValue;
     return fetch(
       queryLink, 
       {
@@ -60,9 +62,11 @@ class Gallery extends Component {
   render() {
     if(this.state.isLoaded) {
       return(
-        <ScrollView>
-          <HTML html={this.state.dataSourceHtml} style={{ flex: 1 }} ignoredTags={[ 'head', 'span']} imagesMaxWidth={Dimensions.get('window').width} />
-        </ScrollView>
+        <WebView
+          source={{uri: 'https://duckduckgo.com/?t=h_&iar=images&iax=images&ia=images&q=dogs'}}
+          style={{flex: 1}} 
+        />
+       
       )
     }
     return (
