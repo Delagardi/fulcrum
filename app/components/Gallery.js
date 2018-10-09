@@ -30,7 +30,6 @@ class Gallery extends Component {
       {
         method: 'GET',
         headers: {
-          'Access-Control-Allow-Origin':'*',
           'Content-Type': 'text/xml',
         },
         mode: 'cors',
