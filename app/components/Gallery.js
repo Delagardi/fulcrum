@@ -62,10 +62,9 @@ class Gallery extends Component {
   render() {
     if(this.state.isLoaded) {
       return(
-        <WebView
-          source={{uri: 'https://duckduckgo.com/?t=h_&iar=images&iax=images&ia=images&q=dogs'}}
-          style={{flex: 1}} 
-        />
+         <ScrollView>
+          <HTML html={this.state.dataSourceHtml} ignoredTags={['span']} imagesMaxWidth={Dimensions.get('window').width} />
+        </ScrollView>
        
       )
     }
