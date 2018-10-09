@@ -1,14 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import Home from './app/components/Home';
+import Gallery from './app/components/Gallery';
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import ComponentTest from './app/components/ComponentTest/ComponentTest';
+
+import { createStackNavigator } from 'react-navigation';
 
 
 const instructions = Platform.select({
@@ -23,21 +19,27 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>NO FUCKING WAY ITS ALIVE! ALIVE!!!</Text>
-        <ComponentTest message='Hello from App.js' messageProps='Hello from App.js but from constructor' />
-      </View>
+      <AppStackNavigator />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const AppStackNavigator = createStackNavigator({
+  Home: { 
+    screen: Home 
   },
+  Gallery: { 
+    screen: Gallery 
+  },
+});
+
+const styles = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#F5FCFF',
+  // },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
